@@ -2,14 +2,12 @@
 # @param {Integer} target
 # @return {Integer[]}
 def two_sum(nums, target)
-  hash = {}
-  nums.each do |num, i|
-    if hash[num] == nil
-      hash[target - num] = i
-    else
-      return [hash[num], i]
+    storage = {}
+    nums.each_index do |i|
+        if storage[nums[i]] == nil
+            storage[target - nums[i]] = i + 1
+        else
+            return [storage[nums[i]], i + 1]
+        end
     end
-  end
 end
-
-puts "#{two_sum([3, 2, 4], 6)}"
